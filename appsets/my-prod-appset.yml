@@ -11,11 +11,11 @@ spec:
       repoURL: https://github.com/kostis-codefresh/many-appsets-demo.git
       revision: HEAD
       directories:
-      - path: apps/*/envs/prod-eu
+      - path: apps/*/envs/prod-us
       - path: apps/*/envs/prod-eu      
   template:      
     metadata:
-      name: '{{index .path.segments 1}}-{{index .path.segments 3}}'  
+      name: '{{index .path.segments 1}}-{{index .path.segments 3}}' 
     spec:
       # The project the application belongs to.
       project: default
