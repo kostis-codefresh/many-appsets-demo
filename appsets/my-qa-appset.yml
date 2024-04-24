@@ -1,9 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: my-prod-appset
+  name: my-qa-appset
   namespace: argocd
 spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
   generators:
   - git:
       repoURL: https://github.com/kostis-codefresh/many-appsets-demo.git
@@ -12,7 +14,7 @@ spec:
       - path: apps/*/envs/qa   
   template:      
     metadata:
-      name: '{{path.basename}}-{{index .path 1}}'
+      name: '{{index .path.segments 1}}-{{index .path.segments 3}}'     
     spec:
       # The project the application belongs to.
       project: default
@@ -21,12 +23,12 @@ spec:
       source:
         repoURL: https://github.com/kostis-codefresh/many-appsets-demo.git
         targetRevision: HEAD
-        path: '{{path}}'
+        path: '{{.path}}'
       
       # Destination cluster and namespace to deploy the application
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{path.basename}}'
+        namespace: '{{index .path.segments 1}}-{{index .path.segments 3}}'
 
       # Sync policy
       syncPolicy:
