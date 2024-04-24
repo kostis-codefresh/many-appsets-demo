@@ -24,7 +24,7 @@ spec:
       source:
         repoURL: https://github.com/kostis-codefresh/many-appsets-demo.git
         targetRevision: HEAD
-        path: '{{.path}}'
+        path: '{{.path.path}}'
       
       # Destination cluster and namespace to deploy the application
       destination:
