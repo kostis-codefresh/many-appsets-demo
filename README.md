@@ -1,12 +1,12 @@
 # How to structure your Argo CD repositories using Application Sets
 
-This is an exaple repository for Organizing your applications with Argo CD
+This is an exaple repository for Organizing your applications with Argo CD.
 
 ## Best practice - Use the three level structure
 
 The starting point should be a 3 level structure as shown in the image below
 
-IMAGE here
+![structure](docs/hierarchy-of-manifests.png)
 
 At the lowest level we have the Kubernetes manifests that define how the application runs (category 1 of manifests). These are your Kustomize or Helm templates and they are completely self-contained, meaning that they can be deployed on their own on any cluster even without Argo CD. We have covered in detail the structure of these files in the promotion blog post. 
 
@@ -22,7 +22,7 @@ There are only 3 levels of abstraction. We have seen companies that have 4 or 5 
 Each level is completely independent of everything else. You can install the Kubernetes manifests on their own, or you can pick a specific application set or you can pick everything at the root. But it is your choice.
 Helm and Kustomize are only used once at the Kubernetes manifests and nowhere else. This makes the templating system super easy to understand
 
-IMAGE here
+![folders](docs/levels.png)
 
 Read the full blog post at TBD
 
