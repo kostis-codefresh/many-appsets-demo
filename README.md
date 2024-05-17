@@ -24,6 +24,6 @@ Helm and Kustomize are only used once at the Kubernetes manifests and nowhere el
 
 ![folders](docs/levels.png)
 
-Read the full blog post at TBD
+Read the full blog post at https://codefresh.io/blog/how-to-structure-your-argo-cd-repositories-using-application-sets/
 
 
